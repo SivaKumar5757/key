@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv='cache-control' content='no-cache'> 
+    <meta http-equiv='expires' content='0'> 
+    <meta http-equiv='pragma' content='no-cache'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+    <title>Key Validator</title>
+    <link rel="icon" href="/static/logo.png" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header style="font-size: 15px;">
+        
+        <div style="font-size: 25px; font-weight: 600;">Subject: {{ subject }}</div>
+        <div style="font-size: 25px; font-weight: 600;">Topic: {{ topic }}</div>
+        <div>Date: {{ date }}</div>
+        <div>Number of Questions: {{ num_questions }}</div>
+    </header>
+    <form id="answer-key-form" action="{{ url_for('submit') }}" method="post">
+        <button type="submit">Submit Answer Key</button>
+        <div id="questions-container">
+            {% set columns = 4 %}
+            {% set questions_per_column = 50 %}
+            {% for col in range(columns) %}
+                <div class="column">
+                    {% for row in range(questions_per_column) %}
+                        {% set question_num = col * questions_per_column + row + 1 %}
+                        {% if question_num <= num_questions %}
+                            <div class="question">
+                                <div class="question-number">{{ question_num }}.</div>
+                                <div class="options">
+                                    <label><input type="radio" name="correct_q{{ question_num }}" value="a"><span>A</span></label>
+                                    <label><input type="radio" name="correct_q{{ question_num }}" value="b"><span>B</span></label>
+                                    <label><input type="radio" name="correct_q{{ question_num }}" value="c"><span>C</span></label>
+                                    <label><input type="radio" name="correct_q{{ question_num }}" value="d"><span>D</span></label>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        <input type="hidden" name="subject" value="{{ subject }}">
+        <input type="hidden" name="topic" value="{{ topic }}">
+        <input type="hidden" name="num_questions" value="{{ num_questions }}">
+        <input type="hidden" name="date" value="{{ date }}">
+    </form>
+    <footer class="footer" style="text-align: center; padding: 30px 0px; width: 100%; background-color: #333;">
+        <div class="container" style="color: #fff;">
+            <p>&copy; 2024 Personal Webpage. All rights reserved.</p>
+            <p>Shaped by Dark</p>
+        </div>
+    </footer>
+</body>
+</html>

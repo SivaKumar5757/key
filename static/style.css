@@ -1,0 +1,207 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow: auto; /* Allow scrolling of the whole page */
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header div {
+    margin: 5px 0; /* Add spacing between the elements */
+}
+
+header .date {
+    font-size: 24px;
+}
+
+header .subject, header .topic {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+}
+
+header .num-questions {
+    font-size: 24px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: #fff;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%; /* Adjust the form width to prevent overflow */
+}
+
+#questions-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.column {
+    display: flex;
+    flex-direction: column; /* Arrange questions vertically in each column */
+    gap: 10px; /* Increased space between questions */
+    flex: 1; /* Allow columns to expand */
+    min-width: calc(100% / 4 - 10px); /* Ensure columns fit within the width */
+    box-sizing: border-box;
+}
+
+.question {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #ddd; /* Divider between questions */
+    background-color: #fafafa;
+    box-sizing: border-box;
+    font-size: 12px; /* Smaller font size */
+    height: auto; /* Allow question height to adjust */
+    line-height: 1.5;
+}
+
+.question-number {
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 20px; /* Increased space between number and options */
+}
+
+.options {
+    display: flex;
+    flex-direction: row; /* Arrange options horizontally */
+    gap: 10px; /* Increased space between options */
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    font-size: 14px; /* Adjust font size */
+    position: relative;
+}
+
+.options input[type="radio"] {
+    display: none;
+}
+
+.options input[type="radio"] + span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; /* Adjust circle size */
+    height: 20px; /* Adjust circle size */
+    border: 1px solid #333;
+    border-radius: 50%;
+    background: #fff;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px; /* Adjust font size */
+    color: #333;
+    font-weight: bold;
+}
+
+.footer p {
+    margin: 0;
+}
+
+.options input[type="radio"]:checked + span {
+    background: black; /* Black background for selected option */
+    border-color: black; /* Black border for selected option */
+    color: white; /* White color for the option's text */
+}
+
+.options input[type="radio"]:checked + span::after {
+    content: '';
+    display: none; /* Remove the inner circle */
+}
+
+button {
+    padding: 10px;
+    margin: 20px auto;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+    display: block; /* Ensure button is a block element */
+}
+
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Media queries for specific resolutions */
+
+@media (max-width: 1200px) and (max-height: 800px) {
+    header {
+        height: auto;
+    }
+    header .subject, header .topic {
+        font-size: 28px;
+    }
+    header .date, header .num-questions {
+        font-size: 20px;
+    }
+    .question {
+        padding: 5px;
+    }
+    .question-number {
+        margin-right: 10px; /* Adjust space between number and options */
+    }
+    .options {
+        gap: 5px; /* Adjust gap between options */
+    }
+    button {
+        margin-top: 30px; /* Adjust space above submit button */
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 15px;
+    }
+    header .subject, header .topic {
+        font-size: 24px;
+    }
+    header .date, header .num-questions {
+        font-size: 18px;
+    }
+    .column {
+        min-width: calc(50% - 10px); /* Make two columns stack horizontally */
+        flex: none; /* Do not allow columns to expand */
+    }
+    .options input[type="radio"] + span {
+        width: 16px; /* Smaller circle size */
+        height: 16px; /* Smaller circle size */
+    }
+    .question-number {
+        font-size: 12px; /* Smaller font size for question number */
+    }
+    .options label {
+        font-size: 12px; /* Smaller font size for options */
+    }
+}

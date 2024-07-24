@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv='cache-control' content='no-cache'> 
+    <meta http-equiv='expires' content='0'> 
+    <meta http-equiv='pragma' content='no-cache'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Key Validator</title>
+    <link rel="icon" href="/static/logo.png" type="image/png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+    <h1>Exam Setup</h1>
+    <form action="{{ url_for('omr') }}" method="post">
+        <div>
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+        </div>
+        <div>
+            <label for="topic">Topic:</label>
+            <input type="text" id="topic" name="topic" required>
+        </div>
+        <div>
+            <label for="num_questions">Number of Questions:</label>
+            <input type="number" id="num_questions" name="num_questions" required>
+        </div>
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <button type="submit">Generate OMR Sheet</button>
+    </form>
+</body>
+</html>

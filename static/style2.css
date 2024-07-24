@@ -1,0 +1,80 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+/* Label Styles */
+form label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Input Styles */
+form input[type="text"],
+form input[type="number"],
+form input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Button Styles */
+form button {
+    padding: 15px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+    }
+    form label {
+        font-size: 16px;
+    }
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="date"] {
+        font-size: 14px;
+    }
+    form button {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
