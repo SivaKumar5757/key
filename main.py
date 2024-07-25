@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, make_response
+import reportlab.lib
+import reportlab.lib.colors
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+import reportlab
 import io
 app = Flask(__name__)
 user_answers = None
@@ -58,17 +61,29 @@ def submit():
 
     # Prepare question-wise analysis
     question_analysis = {}
+    question_analysis2 ={}
+    demo={}
     for key in correct_answers:
         question_analysis[key] = {
-            'user_answer': user_answers.get(key, 'Empty'),
+            'user_answer': user_answers.get(key, 'Left'),
             'correct_answer': correct_answers[key]
         }
+        question_analysis2 [key[1:]]={
+            'user_answer': user_answers.get(key,),
+            'correct_answer': correct_answers[key]
+        }
+    # for i in range (1,201):
+    #     demo[str(i)]={'user_answer': " ",
+    #         'correct_answer': " "
+    #     }
+
+    
 
     # Debug print statement to check the calculated score
     print("Score:", score)
 
     # Render the result template with the score and total number of questions
-    return render_template('result.html', total=total, correct_count=correct_count, wrong_count=wrong_count, empty_count=empty_count, score=score, accuracy=accuracy, question_analysis=question_analysis)
+    return render_template('result.html', total=total, correct_count=correct_count, wrong_count=wrong_count, empty_count=empty_count, score=score, accuracy=accuracy, question_analysis=question_analysis2)
 
 @app.route('/download_pdf')
 def download_pdf():
@@ -122,8 +137,16 @@ def download_pdf():
             line = f"{question}  | {user_answer}          | {correct_answer}"
         elif questio > 99:
             line = f"{question}| {user_answer}          | {correct_answer}"
+        if user_answer ==correct_answer and user_answer != " ":
+            p.setFillColor(reportlab.lib.colors.green)
+            line+="    ✓"
+        elif user_answer ==" " and correct_answer== " ":
+            p.setFillColor==(reportlab.lib.colors.black)
+        else:
+            p.setFillColor(reportlab.lib.colors.red)
+            line+="    ✕"
         p.drawString(x, y,line)
-
+        p.setFillColor(reportlab.lib.colors.black)
         # Check if we need a new page
         if y < bottom_margin + row_height and i < Qn:
             p.showPage()

@@ -72,16 +72,27 @@
             margin-bottom: 5px;
         }
         footer.footer {
+            margin-top: 50px;
             text-align: center;
             padding: 30px 0;
             width: 100%;
             background-color: #333;
             color: #fff;
-            position: absolute;
+            position : relative;
             bottom: 0;
         }
         footer.footer .container {
             color: #fff;
+        }
+        .correct {
+            background-color: #049225; /* Light green for correct answers */
+            color: #f3f5f3; /* Dark green text */
+            font-weight: 600;
+        }
+        .incorrect {
+            background-color: #ff3c4d; /* Light red for incorrect answers */
+            color: #ededed; /* Dark red text */
+            font-weight: 600;
         }
     </style>
 </head>
@@ -103,8 +114,8 @@
                         {% if loop.index0 >= i and loop.index0 < i + 50 %}
                         <tr>
                             <td>{{ question }}</td>
-                            <td>{{ result.user_answer }}</td>
-                            <td>{{ result.correct_answer }}</td>
+                            <td class="{{ 'correct' if result.user_answer == result.correct_answer else 'incorrect' }}">{{ result.user_answer }}</td>
+                            <td class="{{ 'correct' if result.user_answer == result.correct_answer else 'incorrect' }}">{{ result.correct_answer }}</td>
                         </tr>
                         {% endif %}
                     {% endfor %}
@@ -126,16 +137,16 @@
         </div>
     </div>
 
-    <footer class="footer">
+    
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="{{ url_for('download_pdf') }}" class="btn" style="display: inline-block; padding: 10px 20px; font-size: 14px; color: #fff; background-color: #007bff; text-decoration: none; border-radius: 5px;">Download PDF</a>
+    </div>
+<footer class="footer">
         <div class="container">
             <p>&copy; 2024 Personal Webpage. All rights reserved.</p>
             <p>Shaped by Dark</p>
         </div>
     </footer>
-
-    <div style="text-align: center; margin-top: 20px;">
-        <a href="{{ url_for('download_pdf') }}" class="btn" style="display: inline-block; padding: 10px 20px; font-size: 14px; color: #fff; background-color: #007bff; text-decoration: none; border-radius: 5px;">Download PDF</a>
-    </div>
-
 </body>
 </html>
