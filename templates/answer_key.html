@@ -20,7 +20,9 @@
         <div>Number of Questions: {{ num_questions }}</div>
     </header>
     <form id="answer-key-form" action="{{ url_for('submit') }}" method="post">
-        <button type="submit">Submit Answer Key</button>
+        <button type="submit" style="background-color: green; transition: background-color 0.3s ease;" 
+        onmouseover="this.style.backgroundColor='rgb(71,181,113)';" 
+        onmouseout="this.style.backgroundColor='green';">Submit Answer Key</button>
         <div id="questions-container">
             {% set columns = 4 %}
             {% set questions_per_column = 50 %}
@@ -32,7 +34,7 @@
                             <div class="question">
                                 <div class="question-number">{{ question_num }}.</div>
                                 <div class="options">
-                                    <label><input type="radio" name="correct_q{{ question_num }}" value="a"><span>A</span></label>
+                                    <label><input type="radio" name="correct_q{{ question_num }}" value="a" required><span>A</span></label>
                                     <label><input type="radio" name="correct_q{{ question_num }}" value="b"><span>B</span></label>
                                     <label><input type="radio" name="correct_q{{ question_num }}" value="c"><span>C</span></label>
                                     <label><input type="radio" name="correct_q{{ question_num }}" value="d"><span>D</span></label>
