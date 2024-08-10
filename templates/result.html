@@ -115,7 +115,7 @@
                         <tr>
                             <td>{{ question }}</td>
                             <td class="{{ 'correct' if result.user_answer == result.correct_answer else 'incorrect' }}">{{ result.user_answer }}</td>
-                            <td class="{{ 'correct' if result.user_answer == result.correct_answer else 'incorrect' }}">{{ result.correct_answer }}</td>
+                            <td>{{ result.correct_answer }}</td>
                         </tr>
                         {% endif %}
                     {% endfor %}
